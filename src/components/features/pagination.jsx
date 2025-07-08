@@ -1,0 +1,59 @@
+import { createPaginationRange } from "@/lib";
+import { Button } from "../ui/button";
+
+function Pagination({ data, onPageChange }) {
+  const {
+    page = 1,
+    totalPages = 1,
+    hasNextPage = false,
+    hasPreviousPage = false,
+  } = data?.meta || {};
+
+  //   Ellipses
+
+  const paginationRange = createPaginationRange(page, totalPages);
+
+  return (
+    <div className="flex items-center justify-center gap-4 mt-8">
+      <Button
+        onClick={() => onPageChange(page - 1)}
+        disabled={!hasPreviousPage}
+        className="cursor-pointer hover:bg-pag-hover transition-colors disabled:opacity-50 bg-input-bg border border-foreground text-foreground"
+      >
+        Previous
+      </Button>
+
+      <div className="flex gap-2 flex-wrap">
+        {paginationRange.map((pageNum, idx) =>
+          pageNum === "..." ? (
+            <span key={idx + 1} className="px-2 text-gray-500">
+              ...
+            </span>
+          ) : (
+            <button
+              key={pageNum}
+              onClick={() => onPageChange(pageNum)}
+              className={`px-3 py-1 rounded ${
+                pageNum === page
+                  ? "bg-blue-600 text-white cursor-not-allowed"
+                  : "bg-input-bg hover:bg-pag-hover cursor-pointer"
+              }`}
+            >
+              {pageNum}
+            </button>
+          )
+        )}
+      </div>
+
+      <Button
+        onClick={() => onPageChange(page + 1)}
+        disabled={!hasNextPage}
+        className="cursor-pointer hover:bg-pag-hover transition-colors disabled:opacity-50 bg-input-bg border border-foreground text-foreground"
+      >
+        Next
+      </Button>
+    </div>
+  );
+}
+
+export default Pagination;
