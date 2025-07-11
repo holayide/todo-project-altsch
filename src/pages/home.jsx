@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import Cards from "@/components/features/cards";
-import HomeHeader from "@/components/features/homeHeader";
-import SearchFilter from "@/components/features/searchFilter";
-import TodoCard from "@/components/features/todoCard";
-import Pagination from "@/components/features/pagination";
+import Cards from "@/components/features/summay-card/cards";
+import HomeHeader from "@/components/features/header/homeHeader";
+import SearchFilter from "@/components/features/search-filter/searchFilter";
+import TodoCard from "@/components/features/todo-cards/todoCard";
 
 import { useDebounce } from "@/hooks/debounce";
 import { useTasksQueryOptions } from "@/services/queryOptions";
+import Pagination from "@/components/features/pagination/pagination";
 
 function Home() {
   const [page, setPage] = useState(1);

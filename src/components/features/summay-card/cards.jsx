@@ -13,7 +13,6 @@ export default function Cards({ page }) {
   );
 
   // if (isLoading) return <div>Loading tasks...</div>;
-  // if (isError) return <div>Error: {error.message}</div>;
 
   const tasks = data?.data || [];
 
@@ -25,7 +24,6 @@ export default function Cards({ page }) {
   ).length;
 
   return (
-    // mt-14 min-h-[200px]
     <div className="">
       {isError && (
         <div className="text-center text-red-500">

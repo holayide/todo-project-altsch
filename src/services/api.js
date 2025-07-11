@@ -42,22 +42,47 @@ export async function fetchTasks({
   }
 }
 
+// FETCH BY ID
+export async function fetchTaskById(id) {
+  try {
+    const res = await axios.get(`${BASE_URL}/${id}`);
+    return res.data;
+  } catch (e) {
+    throw new Error(e.response?.data?.message || "Failed to Task");
+  }
+}
+
 // CREATE
 export async function createTodo(task) {
-  const res = await axios.post(BASE_URL, task);
-  return res.data;
+  try {
+    const res = await axios.post(BASE_URL, task);
+    return res.data;
+  } catch (e) {
+    // console.error("Create API Error:", e.response?.data || e.message);
+    throw new Error(e.response?.data?.message || "Failed to create task");
+  }
 }
 
 // UPDATE
-export async function updateTodo(id, data) {
-  const res = await axios.put(`${BASE_URL}/${id}`, data);
-  return res.data;
+export async function updateTodo({ id, ...data }) {
+  try {
+    const res = await axios.patch(`${BASE_URL}/${id}`, data);
+    return res.data;
+  } catch (e) {
+    // console.error("Create API Error:", e.response?.data || e.message);
+    throw new Error(e.response?.data?.message || "Failed to update task");
+  }
 }
 
 // DELETE
 export async function deleteTodo(id) {
-  const res = await axios.delete(`${BASE_URL}/${id}`);
-  return res.data;
+  try {
+    const res = await axios.delete(`${BASE_URL}/${id}`);
+    return res.data;
+  } catch (e) {
+    // console.error("Create API Error:", e.response?.data || e.message);
+    throw new Error(e.response?.data?.message || "Failed to update task");
+  }
 }
 
 //TOGGLE

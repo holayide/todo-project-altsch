@@ -1,5 +1,5 @@
+import { Button } from "@/components/ui/button";
 import { createPaginationRange } from "@/lib";
-import { Button } from "../ui/button";
 
 function Pagination({ data, onPageChange }) {
   const {
@@ -8,8 +8,6 @@ function Pagination({ data, onPageChange }) {
     hasNextPage = false,
     hasPreviousPage = false,
   } = data?.meta || {};
-
-  //   Ellipses
 
   const paginationRange = createPaginationRange(page, totalPages);
 

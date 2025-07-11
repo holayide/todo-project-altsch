@@ -4,9 +4,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import { Card, CardContent } from "../ui/card";
-import { Input } from "../ui/input";
+} from "@/components/ui/select";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 import { Search } from "lucide-react";
 import { Filter } from "lucide-react";

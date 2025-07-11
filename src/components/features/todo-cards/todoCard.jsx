@@ -1,17 +1,20 @@
-import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
 import { formatDate, priorityColors } from "@/lib/helpers";
 import { useToggleTodo } from "@/services/queries";
+import EditTaskBtn from "../edit-task/editTaskBtn";
+import DeleteTask from "../delete-task/deleteTask";
 
-import { Badge } from "../ui/badge";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+
 import {
   CheckCircle2,
   Circle,
   Calendar,
   Eye,
-  Edit,
   Trash2,
+  Edit,
 } from "lucide-react";
 
 export default function TodoCard({ todo }) {
@@ -87,34 +90,35 @@ export default function TodoCard({ todo }) {
           </div>
 
           <div className="flex items-center space-x-1">
-            {/* {`/todo/${todo.id}`} */}
-            <Link to="#">
+            <Link to={`/todo/${todo.id}`}>
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                className="h-8 w-8 p-0 hover:bg-blue-50 dark:hover:bg-blue-900/20 cursor-pointer"
               >
                 <Eye className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               </Button>
             </Link>
-            {/* {`/todo/${todo.id}/edit`} */}
-            <Link href="#">
+
+            <EditTaskBtn initialData={todo}>
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0 hover:bg-slate-50 dark:hover:bg-slate-700"
+                className="h-8 w-8 p-0 hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer"
               >
                 <Edit className="w-4 h-4 text-slate-600 dark:text-slate-400" />
               </Button>
-            </Link>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => onDelete(todo.id)}
-              className="h-8 w-8 p-0 hover:bg-red-50 dark:hover:bg-red-900/20"
-            >
-              <Trash2 className="w-4 h-4 text-red-600 dark:text-red-400" />
-            </Button>
+            </EditTaskBtn>
+
+            <DeleteTask taskId={id}>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-8 w-8 p-0 hover:bg-red-50 dark:hover:bg-red-900/20 cursor-pointer"
+              >
+                <Trash2 className="w-4 h-4 text-red-600 dark:text-red-400" />
+              </Button>
+            </DeleteTask>
           </div>
         </div>
       </CardContent>
