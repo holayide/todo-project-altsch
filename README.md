@@ -148,7 +148,7 @@ Used to toggle a task between in-progress and completed.
 
 ## Media
 
-video of key features will be added
+🎥 [Watch Video Demo on Loom](https://www.loom.com/share/bfda9844156d4757a77d6c8b2cf3b588?sid=e7fab3fa-337d-440a-9d43-50476fd8e2c3)
 
 ## Known Issues
 
