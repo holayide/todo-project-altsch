@@ -5,10 +5,10 @@ import Cards from "@/components/features/summay-card/cards";
 import HomeHeader from "@/components/features/header/homeHeader";
 import SearchFilter from "@/components/features/search-filter/searchFilter";
 import TodoCard from "@/components/features/todo-cards/todoCard";
-
 import { useDebounce } from "@/hooks/debounce";
 import { useTasksQueryOptions } from "@/services/queryOptions";
 import Pagination from "@/components/features/pagination/pagination";
+import TodoCardSkeleton from "@/components/features/todo-cards/todoCardSkeleton";
 
 function Home() {
   const [page, setPage] = useState(1);
@@ -72,8 +72,10 @@ function Home() {
         )}
 
         {isLoading && (
-          <div className="text-center text-gray-500 dark:text-gray-400">
-            Loading tasks...
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {[...Array(6)].map((_, i) => (
+              <TodoCardSkeleton key={i} />
+            ))}
           </div>
         )}
 

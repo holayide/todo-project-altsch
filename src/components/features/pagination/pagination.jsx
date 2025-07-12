@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { createPaginationRange } from "@/lib";
 
+import { ChevronRight, ChevronLeft } from "lucide-react";
+
 function Pagination({ data, onPageChange }) {
   const {
     page = 1,
@@ -18,7 +20,8 @@ function Pagination({ data, onPageChange }) {
         disabled={!hasPreviousPage}
         className="cursor-pointer hover:bg-pag-hover transition-colors disabled:opacity-50 bg-input-bg border border-foreground text-foreground"
       >
-        Previous
+        <span className="hidden xs:block">Previous</span>
+        <ChevronLeft className="block xs:hidden" />
       </Button>
 
       <div className="flex gap-2 flex-wrap">
@@ -48,7 +51,8 @@ function Pagination({ data, onPageChange }) {
         disabled={!hasNextPage}
         className="cursor-pointer hover:bg-pag-hover transition-colors disabled:opacity-50 bg-input-bg border border-foreground text-foreground"
       >
-        Next
+        <span className="hidden xs:block">Next</span>
+        <ChevronRight className="block xs:hidden" />
       </Button>
     </div>
   );

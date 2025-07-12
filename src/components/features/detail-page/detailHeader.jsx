@@ -14,9 +14,9 @@ function DetailHeader({ data }) {
   const { mutate: toggleStatus, isPending } = useToggleDetailTodo();
 
   return (
-    <div className="flex items-center justify-between mb-8">
-      <div className="flex items-center space-x-4">
-        <Link to="/">
+    <div className="xs:flex items-center justify-between mb-8 space-y-4 xs:space-y-0">
+      <div className="flex flex-wrap items-center space-x-4">
+        <Link to="/home">
           <Button
             variant="ghost"
             size="sm"
@@ -32,7 +32,7 @@ function DetailHeader({ data }) {
         </h1>
       </div>
 
-      <div className="flex items-center space-x-2">
+      <div className="flex flex-wrap items-center space-x-2 space-y-3 xs:space-y-0">
         <Button
           variant="outline"
           onClick={() => toggleStatus({ id, status })}

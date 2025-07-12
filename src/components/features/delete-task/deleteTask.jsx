@@ -43,7 +43,7 @@ function DeleteTask({ taskId, edit = "home", children }) {
           <AlertDialogAction
             disabled={isPending}
             onClick={handleDelete}
-            className="cursor-pointer bg-destructive text-primary hover:bg-red-400"
+            className="cursor-pointer bg-destructive text-white dark:text-primary hover:bg-red-400"
           >
             Delete
           </AlertDialogAction>

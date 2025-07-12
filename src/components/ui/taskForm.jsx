@@ -45,7 +45,6 @@ function TaskForm({ onCloseForm, initialData, update = "create" }) {
 
   useEffect(() => {
     if (initialData) {
-      console.log("Initial data priority:", initialData.priority);
       reset({
         name: initialData.name || "",
         description: initialData.description || "",
@@ -87,8 +86,9 @@ function TaskForm({ onCloseForm, initialData, update = "create" }) {
           Title
         </Label>
         <Input
-          {...register("name", { maxLength: 50 })}
+          {...register("name")}
           id="title"
+          maxLength={50}
           placeholder="Enter task title..."
           className={`border-slate-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 focus:border-blue-500 focus:ring-blue-500 ${
             errors.name
@@ -114,18 +114,20 @@ function TaskForm({ onCloseForm, initialData, update = "create" }) {
         </Label>
 
         <Textarea
-          {...register("description", { maxLength: 50 })}
+          {...register("description")}
           id="description"
+          maxLength={200}
           placeholder="Describe your task in detail..."
           rows={4}
-          className={`w-full border-slate-200 whitespace-pre-wrap dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 focus:border-blue-500 focus:ring-blue-500 resize-none `}
+          className={`max-w-[526px] w-full border-slate-200 whitespace-pre-wrap dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 focus:border-blue-500 focus:ring-blue-500 resize-none `}
         />
+
+        {errors.description && (
+          <p className="text-sm text-red-600 dark:text-red-400">
+            {errors.description.message}
+          </p>
+        )}
       </div>
-      {errors.description && (
-        <p className="text-sm text-red-600 dark:text-red-400">
-          {errors.description.message}
-        </p>
-      )}
 
       {/* Priority  */}
       <div className="space-y-2">

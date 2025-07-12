@@ -1,6 +1,8 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { useTasksQueryOptions } from "@/services/queryOptions";
 import { useQuery } from "@tanstack/react-query";
+
+import { useTasksQueryOptions } from "@/services/queryOptions";
+import { Card, CardContent } from "@/components/ui/card";
+import CardSkeleton from "./cardSkeleton";
 
 import { AlertCircle } from "lucide-react";
 import { Clock } from "lucide-react";
@@ -32,8 +34,14 @@ export default function Cards({ page }) {
       )}
 
       {isLoading && (
-        <div className="mb-8 text-center text-gray-500 dark:text-gray-400">
-          Loading tasks...
+        // <div className="mb-8 text-center text-gray-500 dark:text-gray-400">
+        //   Loading tasks...
+        // </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+          {[...Array(4)].map((_, i) => (
+            <CardSkeleton key={i} />
+          ))}
         </div>
       )}
 

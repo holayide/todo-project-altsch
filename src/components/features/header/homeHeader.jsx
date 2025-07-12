@@ -7,19 +7,21 @@ import { NewTaskBtn } from "../new-task";
 
 function HomeHeader() {
   return (
-    <div className="flex items-center justify-between mb-6">
-      <div>
-        <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-          My Tasks
-        </h1>
-        <p className="text-slate-600 dark:text-slate-400">
-          Organize and track your daily tasks efficiently
-        </p>
-      </div>
+    <>
+      <div className="xs:flex items-center justify-between mb-8 xs:mb-6">
+        <div>
+          <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+            My Tasks
+          </h1>
+          <p className="text-slate-600 dark:text-slate-400">
+            Organize and track your daily tasks efficiently
+          </p>
+        </div>
 
-      <div className="flex items-center space-x-3">
-        <ThemeToggle />
-        <NewTaskBtn />
+        <div className="flex items-center space-x-3 mt-3 xs:mt-0">
+          <ThemeToggle />
+          <NewTaskBtn />
+        </div>
       </div>
 
       <Link
@@ -31,11 +33,11 @@ function HomeHeader() {
           <AlertTriangle className="w-5 h-5 text-white" />
         </div>
 
-        <div className="absolute bottom-full right-0 mb-2 hidden group-hover:block bg-slate-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+        <div className="absolute bottom-full right-0 mb-2 hidden group-hover:block bg-foreground dark:bg-slate-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
           Test Error Boundary
         </div>
       </Link>
-    </div>
+    </>
   );
 }
 

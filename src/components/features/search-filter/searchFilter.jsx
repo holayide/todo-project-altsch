@@ -38,7 +38,7 @@ export default function SearchFilter({
             <div className="flex gap-3">
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <div className="rounded-md bg-input-bg">
-                  <SelectTrigger className="w-[140px] border-slate-200 bg-red-800">
+                  <SelectTrigger className="w-[140px] border-slate-200 cursor-pointer">
                     <Filter className="w-4 h-4 mr-2" />
                     <SelectValue />
                   </SelectTrigger>
@@ -52,7 +52,7 @@ export default function SearchFilter({
 
               <Select value={priorityFilter} onValueChange={setPriorityFilter}>
                 <div className="rounded-md bg-input-bg">
-                  <SelectTrigger className="w-[140px] border-slate-200">
+                  <SelectTrigger className="w-[140px] border-slate-200 cursor-pointer">
                     <SelectValue />
                   </SelectTrigger>
                 </div>

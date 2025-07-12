@@ -76,7 +76,7 @@ export default function TodoCard({ todo }) {
 
       <CardContent className="pt-0">
         <p
-          className={`text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-2 ${
+          className={`text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-2 whitespace-pre-wrap break-words ${
             status === "done" ? "line-through" : ""
           }`}
         >
