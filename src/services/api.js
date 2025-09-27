@@ -1,7 +1,27 @@
 import axios from "axios";
+import api from "./auth";
 
-const BASE_URL = "https://api.oluwasetemi.dev/tasks";
+// REGISTER
+export async function registerUser(data) {
+  try {
+    const res = await api.post(`/auth/register`, data);
+    return res.data;
+  } catch (e) {
+    throw new Error(e.response?.data?.message || "Failed to register user");
+  }
+}
 
+// Login
+export async function loginUser(data) {
+  try {
+    const res = await api.post(`/auth/login`, data);
+    return res.data;
+  } catch (e) {
+    throw new Error(e.response?.data?.message || "Failed to login user");
+  }
+}
+
+// FETCH TASK
 export async function fetchTasks({
   page = 1,
   name = "",
@@ -10,7 +30,7 @@ export async function fetchTasks({
   all = false,
 }) {
   try {
-    const response = await axios.get(BASE_URL, {
+    const response = await api.get("/tasks", {
       params: {
         page,
         ...(name && { name }),
@@ -45,7 +65,7 @@ export async function fetchTasks({
 // FETCH BY ID
 export async function fetchTaskById(id) {
   try {
-    const res = await axios.get(`${BASE_URL}/${id}`);
+    const res = await api.get(`/tasks/${id}`);
     return res.data;
   } catch (e) {
     throw new Error(e.response?.data?.message || "Failed to Task");
@@ -55,7 +75,7 @@ export async function fetchTaskById(id) {
 // CREATE
 export async function createTodo(task) {
   try {
-    const res = await axios.post(BASE_URL, task);
+    const res = await api.post("/tasks", task);
     return res.data;
   } catch (e) {
     // console.error("Create API Error:", e.response?.data || e.message);
@@ -66,7 +86,7 @@ export async function createTodo(task) {
 // UPDATE
 export async function updateTodo({ id, ...data }) {
   try {
-    const res = await axios.patch(`${BASE_URL}/${id}`, data);
+    const res = await api.patch(`/tasks/${id}`, data);
     return res.data;
   } catch (e) {
     // console.error("Create API Error:", e.response?.data || e.message);
@@ -77,7 +97,7 @@ export async function updateTodo({ id, ...data }) {
 // DELETE
 export async function deleteTodo(id) {
   try {
-    const res = await axios.delete(`${BASE_URL}/${id}`);
+    const res = await api.delete(`/tasks/${id}`);
     return res.data;
   } catch (e) {
     // console.error("Create API Error:", e.response?.data || e.message);
@@ -90,8 +110,8 @@ export async function toggleTodo(id, currentStatus) {
   try {
     const newStatus = currentStatus === "TODO" ? "DONE" : "TODO";
 
-    const res = await axios.patch(
-      `${BASE_URL}/${id}`,
+    const res = await api.patch(
+      `/tasks/${id}`,
       {
         status: newStatus,
       },
